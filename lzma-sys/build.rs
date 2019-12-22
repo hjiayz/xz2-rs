@@ -8,7 +8,7 @@ fn main() {
     let target = env::var("TARGET").unwrap();
 
     println!("cargo:rerun-if-env-changed=LZMA_API_STATIC");
-    let want_static = env::var("LZMA_API_STATIC").is_ok();
+    let want_static = env::var("LZMA_API_STATIC").is_ok() || cfg!(feature = "staticlib");
     let msvc = target.contains("msvc");
 
     // If a static link is desired, we compile from source.
