@@ -19,14 +19,9 @@ edition = "2018"
 members = ["systest"]
 
 [dependencies]
+lzma-sys = { path = "lzma-sys", version = "0.1.11"}
 tokio-io = { version = "0.1.12", optional = true }
 futures = { version = "0.1.26", optional = true }
-
-[target.'cfg(staticlib)'.dependencies]
-lzma-sys = { path = "lzma-sys", version = "0.1.11", features = ["staticlib"] }
-
-[target.'cfg(not(staticlib))'.dependencies]
-lzma-sys = { path = "lzma-sys", version = "0.1.11" }
 
 [dev-dependencies]
 rand = "0.7.0"
@@ -35,4 +30,3 @@ tokio-core = "0.1.17"
 
 [features]
 tokio = ["tokio-io", "futures"]
-staticlib = []
